@@ -1,4 +1,4 @@
-class EquipementController < ApplicationController
+class EquipmentsController < ApplicationController
     before_action :set_equipment, only: [:show, :edit, :update, :destroy]
     after_action :save_show_equipment, only: [:create, :update]
 
