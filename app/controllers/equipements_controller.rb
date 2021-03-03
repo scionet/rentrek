@@ -43,7 +43,7 @@ class EquipementsController < ApplicationController
         if @equipment.save
             redirect_to equipment_path(@equipment)
         else
-            render
+            render :new
         end 
     end
 end
