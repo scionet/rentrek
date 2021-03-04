@@ -1,9 +1,9 @@
-class EquipementsController < ApplicationController
+class EquipmentsController < ApplicationController
     before_action :set_equipment, only: [:show, :edit, :update, :destroy]
     after_action :save_show_equipment, only: [:create, :update]
 
     def index
-        @equipments = Equipment.all
+        @all_equipment = Equipment.all
     end
 
     def show
@@ -43,7 +43,7 @@ class EquipementsController < ApplicationController
         if @equipment.save
             redirect_to equipment_path(@equipment)
         else
-            render
+            render :new
         end 
     end
 end
