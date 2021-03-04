@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+    before_action :set_reservation, only: [:show]
+    after_action :save_show_reservation, only: [:create]
+    
     def index
         @reservations = Reservation.all
     end
