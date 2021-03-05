@@ -1,10 +1,9 @@
 <h1>Here's where the user sees all the equipment</h1>
 <p>Functions as the homepage</p>
 
-<<<<<<< HEAD
 <div class="container">
   <div class="row">
-    <% @all_equipment.each do |equipment| %>
+    <% @equipment.each do |equipment| %>
       <div class="col-12 col-md-6 col-lg-3">
       <%= link_to equipment_path(equipment), class: 'card-link' do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://i.redd.it/f1lfnlk3tsx51.jpg');">
@@ -17,8 +16,3 @@
     <% end %>
   </div>
 </div>
-=======
-<% if policy(Equipment).create? %>
-  <%= link_to "New equipment", new_equipment_path %>
-<% end %>
->>>>>>> 00edd6e (added pundit to create and show)
