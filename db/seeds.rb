@@ -17,7 +17,7 @@ def seed_equipment
   category.save
 
   Equipment.create!(name: "Coleman Camping Tent", user_id: user.id, category_id: category.id)
-  Equipment.create!(name: "Full Suspension Mountain Bikes - Adult", user_id: user.id, category_id: category.id)
+  Equipment.create!(name: "Full Suspension Mountain Bikes", user_id: user.id, category_id: category.id)
   Equipment.create!(name: "Inflatable Kayaks - Single", user_id: user.id, category_id: category.id)
   Equipment.create!(name: "Snowshoes - Kids", user_id: user.id, category_id: category.id)
   Equipment.create!(name: "Snowboard - Adult", user_id: user.id, category_id: category.id)
