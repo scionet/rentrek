@@ -1,2 +1,18 @@
 <h1>Here's where the user sees all the equipments</h1>
 <p>Functions as the homepage</p>
+
+<div class="container">
+  <div class="row">
+    <% @all_equipment.each do |equipment| %>
+      <div class="col-12 col-md-6 col-lg-3">
+      <%= link_to equipment_path(equipment), class: 'card-link' do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images-na.ssl-images-amazon.com/images/I/71L6RjbQi8L._AC_SX425_.jpg');">
+          <div class="card-description">
+          </div>
+            <h2><%= equipment.name %></h2>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
