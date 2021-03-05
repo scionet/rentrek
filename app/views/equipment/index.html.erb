@@ -1,6 +1,7 @@
 <h1>Here's where the user sees all the equipment</h1>
 <p>Functions as the homepage</p>
 
+<<<<<<< HEAD
 <div class="container">
   <div class="row">
     <% @all_equipment.each do |equipment| %>
@@ -16,3 +17,8 @@
     <% end %>
   </div>
 </div>
+=======
+<% if policy(Equipment).create? %>
+  <%= link_to "New equipment", new_equipment_path %>
+<% end %>
+>>>>>>> 00edd6e (added pundit to create and show)
