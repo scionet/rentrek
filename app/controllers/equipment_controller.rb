@@ -1,21 +1,28 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[show edit update destroy]
-  after_action :save_show_equipment, only: %i[create update]
 
   def index
-    @equipment = Equipment.all
+    @equipment = policy_scope(Equipment).order(created_at: :desc)
   end
 
   def show
+    authorize @equipment
   end
 
   def new
     @equipment = Equipment.new
+    authorize @equipment
   end
 
   def create
-    @equipment = Equipment.new(equipment_params)
+    @equipment = Equipment.create(equipment_params)
     @equipment.user = current_user
+    authorize @equipment
+    if @equipment.save
+      redirect_to equipment_path(@equipment)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,7 +33,6 @@ class EquipmentController < ApplicationController
 
   def destroy
     @equipment.destroy
-    redirect_to
   end
 
   private
@@ -36,14 +42,6 @@ class EquipmentController < ApplicationController
   end
 
   def equipment_params
-    params.require(:equipment).permit[:name, :description, :price_per_day, :image, :category_id, :available]
-  end
-
-  def save_show_equipment
-    if @equipment.save
-      redirect_to equipment_path(@equipment)
-    else
-      render :new
-    end
+    params.require(:equipment).permit(:name, :description, :category_id)
   end
 end

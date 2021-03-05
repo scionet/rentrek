@@ -1,2 +1,6 @@
 <h1>Here's where the user sees all the equipment</h1>
 <p>Functions as the homepage</p>
+
+<% if policy(Equipment).create? %>
+  <%= link_to "New equipment", new_equipment_path %>
+<% end %>
