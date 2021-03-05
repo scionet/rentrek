@@ -17,7 +17,6 @@ class EquipmentController < ApplicationController
 
   def create
     authorize @equipment
-    @equipment = Equipment.create(equipment_params)
     @equipment.user = current_user
     if @equipment.save
       redirect_to equipment_path(@equipment)
