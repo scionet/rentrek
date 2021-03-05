@@ -1,9 +1,9 @@
-class EquipmentsController < ApplicationController
+class EquipmentController < ApplicationController
   before_action :set_equipment, only: %i[show edit update destroy]
   after_action :save_show_equipment, only: %i[create update]
 
   def index
-    @all_equipment = Equipment.all
+    @equipment = Equipment.all
   end
 
   def show
