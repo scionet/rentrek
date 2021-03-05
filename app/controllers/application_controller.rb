@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update)
   
   #↑devise  ↓pundit
+  
   include Pundit
 
   # Pundit: white-list approach.
