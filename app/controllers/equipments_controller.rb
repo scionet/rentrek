@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_equipment, only: %i[show edit update destroy]
   after_action :save_show_equipment, only: %i[create update]
 
