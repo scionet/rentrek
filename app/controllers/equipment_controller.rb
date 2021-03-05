@@ -16,6 +16,7 @@ class EquipmentController < ApplicationController
   end
 
   def create
+    @equipment = Equipment.new(equipment_params)
     authorize @equipment
     @equipment.user = current_user
     if @equipment.save

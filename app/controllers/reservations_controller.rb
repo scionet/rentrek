@@ -1,23 +1,30 @@
 class ReservationsController < ApplicationController
     before_action :set_reservation, only: [:show]
-    after_action :save_show_reservation, only: [:create]
     
     def index
-        @reservations = Reservation.all
+        @reservations = policy_scope(Reservation).order(created_at: :desc)
     end
 
     def show
+        authorize @reservation
     end
 
     def new
         @reservation = Reservation.new
+        authorize @reservation
     end
 
     def create
         @equipment = Equipment.find(params[:equipment_id])
         @reservation = Reservation.new(reservation_params)
+        authorize @reservation
         @reservation.user = current_user
         @reservation.equipment = @equipment
+        if @reservation.save
+            redirect_to reservation_path(@reservation)
+        else
+            render :new
+        end 
     end
 
     private
