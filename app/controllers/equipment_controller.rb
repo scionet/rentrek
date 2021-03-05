@@ -16,9 +16,9 @@ class EquipmentController < ApplicationController
   end
 
   def create
+    authorize @equipment
     @equipment = Equipment.create(equipment_params)
     @equipment.user = current_user
-    authorize @equipment
     if @equipment.save
       redirect_to equipment_path(@equipment)
     else
@@ -27,12 +27,21 @@ class EquipmentController < ApplicationController
   end
 
   def edit
+    authorize @equipment
   end
 
   def update
+    authorize @equipment
+    @equipment.update(equipment_params)
+    if @equipment.save
+      redirect_to equipment_path(@equipment)
+    else
+      render :new
+    end
   end
 
   def destroy
+    authorize @equipment
     @equipment.destroy
   end
 
