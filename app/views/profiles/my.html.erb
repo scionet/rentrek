@@ -29,11 +29,24 @@
         <p>
         <%= link_to reservation.equipment.name, reservation_path(reservation) %> : 
         <%= reservation.start_date %> ~
-        <%= reservation.end_date %>
+        <%= reservation.end_date %> | 
+        <%= reservation.status %>
         </p>
+      <% end %>
+      <hr>
+      <h2>Incoming Requests</h2>
+      <% @all_my_equipment.each do |equipment| %>
+        <% if equipment.reservations.present? %>
+          <% equipment.reservations.each do |reservation| %>
+            <p>
+            <%= reservation.user.email %> wants to rent 
+            <%= equipment.name %> for 
+            <%= reservation.start_date %> to <%= reservation.end_date %> | 
+            <%= reservation.status %>
+            </p>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
-
-    
 </div>
