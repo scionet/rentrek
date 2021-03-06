@@ -3,3 +3,8 @@
 <hr>
 <%= @equipment.description %>
 <hr>
+<p>
+owned by <%= @equipment.user.email %>
+</p>
+
+<%= link_to "request to rent", new_equipment_reservation_path(@equipment) %>
