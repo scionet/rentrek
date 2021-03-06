@@ -30,7 +30,7 @@ def seed_equipment
 
   user1 = User.create(email: "johndoe@email.com", password: "fakeuser")
   user2 = User.create(email: "janedoe@email.com", password: "fakeuser")
-  category = Category.new(name: "Test")
+  category = Category.create!(name: "Test")
 
   puts "Generating equipment for 2 test users..."
   puts "__________________"
