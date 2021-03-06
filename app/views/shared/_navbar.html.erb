@@ -25,7 +25,7 @@
           <%= tag.i class: "bi bi-person-circle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             
-            <%= link_to "See my reservations", "#", class: "dropdown-item" %>
+            <%= link_to "My profile", "profile_path", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

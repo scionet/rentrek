@@ -7,20 +7,15 @@
     <%# debug @equipment %>
     <% @equipment.each do |equipment| %>
       <div class="p-2">
-        <%= link_to equipment_path(equipment) do %>
-          <%= image_tag("https://picsum.photos/600?random", height: '200px', width: '100%', style: "object-fit: cover") %>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><%= equipment.name %></h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-            <div class="card-body">
-              <p class="card-text"></p>
-            </div>
+        <%= image_tag("https://picsum.photos/600?random", height: '200px', width: '100%', style: "object-fit: cover") %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= equipment.name %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <%= link_to "View more", equipment_path(equipment), class: 'btn btn-primary stretched-link' %>
+            <%# <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> %>
           </div>
-        <% end %>
+        </div>
       </div>
     <% end %>
   </div>
