@@ -1,9 +1,5 @@
 class ReservationsController < ApplicationController
     before_action :set_reservation, only: [:show]
-    
-    def index
-        @reservations = policy_scope(Reservation).order(created_at: :desc)
-    end
 
     def show
         authorize @reservation
