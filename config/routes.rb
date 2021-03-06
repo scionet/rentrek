@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  # devise_for :users
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    # omniauth_callbacks: 'omni_auth'
-  }
+ devise_for :users
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions',
+  #   registrations: 'users/registrations',
+  #   # omniauth_callbacks: 'omni_auth'
+  # }
 
   # root to: 'application#home'
   root to:  'equipment#index'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create]
   end
   resources :reservations, only: [:show, :edit, :update, :destroy]
+  
+  get 'profiles', to: 'profiles#show', as: "profiles"
   get 'profile', to: 'profiles#my'
   get 'profile/:id', to: 'profiles#show'
 end
