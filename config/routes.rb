@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create]
   end
   resources :reservations, only: [:show, :edit, :update, :destroy]
-  get 'profile', to: 'profiles#show', as: "profile"
+  
+  get 'profiles', to: 'profiles#show', as: "profiles"
+  get 'profile', to: 'profiles#my'
+  get 'profile/:id', to: 'profiles#show'
 end

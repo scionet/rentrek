@@ -5,11 +5,11 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def show?
+  def my?
     true
   end
 
-  def profile?
+  def show?
     true
   end
 end
