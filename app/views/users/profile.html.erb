@@ -1,0 +1,21 @@
+<h1>My Profile Page</h1>
+<%= @user.email %>
+<hr>
+<h2>My Equipment</h2>
+<% @all_my_equipment.each do |equipment| %>
+  <p>
+  <%= link_to equipment.name, equipment_path(equipment) %>
+  </p>
+  <p>
+  <%= equipment.description %>
+  </p>
+<% end %>
+<hr>
+<h2>My Reservations</h2>
+<% @my_reservations.each do |reservation| %>
+  <p>
+  <%= link_to reservation.equipment.name, reservation_path(reservation) %> : 
+  <%= reservation.start_date %> ~
+  <%= reservation.end_date %>
+  </p>
+<% end %>
