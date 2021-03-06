@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    before_action :set_reservation, only: [:show]
+    before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
     def show
         authorize @reservation
@@ -24,6 +24,26 @@ class ReservationsController < ApplicationController
         else
             render :new
         end 
+    end
+
+    def edit
+        authorize @reservation
+    end
+
+    def update
+        authorize @reservation
+        @reservation.update(reservation_params)
+        if @reservation.save
+            redirect_to reservation_path(@reservation)
+        else
+            render :new
+        end 
+    end
+
+    def destroy
+        authorize @reservation
+        @reservation.destroy
+        redirect_to :root
     end
 
     private

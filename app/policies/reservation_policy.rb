@@ -12,4 +12,12 @@ class ReservationPolicy < ApplicationPolicy
   def create?
     @user != @record.equipment.user
   end
+
+  def update?
+    @user == @record.user || @user == @record.equipment.user
+  end
+
+  def destroy?
+    @user == @record.user || @user == @record.equipment.user
+  end
 end

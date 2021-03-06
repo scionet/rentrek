@@ -1,0 +1,7 @@
+<h1>Reservation edit page</h1>
+
+<%= simple_form_for [ @equipment, @reservation ] do |f| %>
+  <%= f.input :start_date, as: :date, html5: true%>
+  <%= f.input :end_date, as: :date, html5: true%>
+  <%= f.button :submit %>
+<% end %>
