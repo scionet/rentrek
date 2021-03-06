@@ -10,3 +10,32 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+#navbarDropdown {
+  font-size: 2em;
+  margin-left: 8px;
+}
+
+.navbar {
+
+  ul.navbar-nav.mr-auto li {
+    margin-left: 8px;
+  }
+
+  .bi-bell-fill {
+    font-size: 1.3em;
+    line-height: 1;
+  }
+
+  li i,
+    {
+    font-size: 1.3em;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-nav {
+    align-items: center;
+  }
+}
