@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   end
   resources :reservations, only: [:show, :edit, :update, :destroy]
   resources :users, only: [:show]
+  get 'profile', to: 'users#profile'
 end
