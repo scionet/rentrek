@@ -43,6 +43,7 @@
             <%= equipment.name %> for 
             <%= reservation.start_date %> to <%= reservation.end_date %> | 
             <%= reservation.status %>
+            <%= link_to "respond", reservation_path(reservation) %>
             </p>
           <% end %>
         <% end %>
