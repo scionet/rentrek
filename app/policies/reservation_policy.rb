@@ -6,7 +6,7 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def show?
-    @user == @record.user | @user == @record.equipment.user
+    @user == @record.user || @user == @record.equipment.user
   end
 
   def create?

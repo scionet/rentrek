@@ -1,1 +1,9 @@
 <h1>This is where you see details of one reservation</h1>
+
+<div>
+  <p><%= @reservation.equipment.name %></p>
+  <p><%= @reservation.start_date %> ~ <%= @reservation.end_date %></p>
+  <p>rented by <%= @reservation.user.email %></p>
+  <p>owned by <%= @reservation.equipment.user.email %></p>
+</div>
+
