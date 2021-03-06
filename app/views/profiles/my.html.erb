@@ -17,7 +17,8 @@
       <h2>My Equipment</h2>
         <% @all_my_equipment.each do |equipment| %>
         <p>
-        <%= link_to equipment.name, equipment_path(equipment) %>
+        <%= link_to equipment.name, equipment_path(equipment) %> 
+        <%= link_to "edit", edit_equipment_path(equipment) %>
         </p>
         <p>
         <%= equipment.description %>
