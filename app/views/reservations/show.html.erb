@@ -7,3 +7,9 @@
   <p>owned by <%= @reservation.equipment.user.email %></p>
 </div>
 
+<%= link_to "Edit", edit_reservation_path(@reservation) %>
+
+<%= link_to "Delete",
+            reservation_path(@reservation),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
