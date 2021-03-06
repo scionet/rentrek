@@ -1,22 +1,54 @@
-<h1>My Profile Page</h1>
-<%= @user.email %>
-<hr>
-<h2>My Equipment</h2>
-<% @all_my_equipment.each do |equipment| %>
-  <p>
-  <%= link_to equipment.name, equipment_path(equipment) %>
-  </p>
-  <p>
-  <%= equipment.description %>
-  </p>
-<% end %>
-<hr>
-<h2>My Reservations</h2>
-<% @my_reservations.each do |reservation| %>
-  <p>
-  <%= link_to reservation.equipment.name, reservation_path(reservation) %> : 
-  <%= reservation.start_date %> ~
-  <%= reservation.end_date %> | 
-  <%= reservation.status %>
-  </p>
-<% end %>
+<div class="container-lg">
+  <h1>My Profile Page</h1>
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">username placeholder</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><p><%= @user.email %></p></h6>
+          <p class="card-text">This user is lazy. They didn't leave any message here.</p>
+          <a href="#" class="card-link">edit_placeholder</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-8">
+      <h2>My Equipment</h2>
+        <% @all_my_equipment.each do |equipment| %>
+        <p>
+        <%= link_to equipment.name, equipment_path(equipment) %>
+        </p>
+        <p>
+        <%= equipment.description %>
+        </p>
+      <% end %>
+      <hr>
+      <h2>My Reservations</h2>
+      <% @my_reservations.each do |reservation| %>
+        <p>
+        <%= link_to reservation.equipment.name, reservation_path(reservation) %> : 
+        <%= reservation.start_date %> ~
+        <%= reservation.end_date %> | 
+        <%= reservation.status %>
+        </p>
+      <% end %>
+      <hr>
+      <h2>Incoming Requests</h2>
+      <% @all_my_equipment.each do |equipment| %>
+        <% if equipment.reservations.present? %>
+          <% equipment.reservations.each do |reservation| %>
+            <p>
+            <%= reservation.user.email %> wants to rent 
+            <%= equipment.name %> for 
+            <%= reservation.start_date %> to <%= reservation.end_date %> | 
+            <%= reservation.status %>
+            </p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+    
+</div>
