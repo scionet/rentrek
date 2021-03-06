@@ -1,17 +1,21 @@
-<h1>Here's where the user sees all the equipment</h1>
-<p>Functions as the homepage</p>
-
+<div class="container text-center">
+  <h1>Here's where the user sees all the equipment</h1>
+  <p>Functions as the homepage</p>
+</div>
 <div class="container">
-  <div class="row">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <%# debug @equipment %>
     <% @equipment.each do |equipment| %>
-      <div class="col-12 col-md-6 col-lg-3">
-      <%= link_to equipment_path(equipment), class: 'card-link' do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://i.redd.it/f1lfnlk3tsx51.jpg');">
-          <div class="card-description">
+      <div class="p-2">
+        <%= image_tag("https://picsum.photos/600?random", height: '200px', width: '100%', style: "object-fit: cover") %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= equipment.name %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <%= link_to "View more", equipment_path(equipment), class: 'btn btn-primary stretched-link' %>
+            <%# <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> %>
           </div>
-            <h2><%= equipment.name %></h2>
         </div>
-      <% end %>
       </div>
     <% end %>
   </div>
