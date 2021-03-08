@@ -44,7 +44,9 @@
             <%= equipment.name %> for 
             <%= reservation.start_date %> to <%= reservation.end_date %> | 
             <%= reservation.status %>
-            <%= link_to "respond", reservation_path(reservation) %>
+            <% if reservation.status == "Pending" %>
+              <%= link_to "respond", reservation_path(reservation) %>
+            <% end %>
             </p>
           <% end %>
         <% end %>

@@ -20,4 +20,16 @@ class ReservationPolicy < ApplicationPolicy
   def destroy?
     @user == @record.user || @user == @record.equipment.user
   end
+
+  def accept?
+    @user == @record.equipment.user && @record.status == "Pending"
+  end
+
+  def reject?
+    @user = @record.equipment.user && @record.status == "Pending"
+  end
+
+  def cancel?
+    @user == @record.user && @record.status == "Pending" || @user = @record.equipment.user
+  end
 end
