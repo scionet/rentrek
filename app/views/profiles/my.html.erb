@@ -58,8 +58,8 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <%= link_to "View", reservation_path(reservation), class: "dropdown-item" %>
                     <% if reservation.status == "Pending" %>
-                      <%= link_to "Edit", edit_reservation_path(@reservation) %>
-                      <%= link_to "Cancel", cancel_reservation_path(@reservation), method: :post %>
+                      <%= link_to "Edit", edit_reservation_path(@reservation), class: "dropdown-item" %>
+                      <%= link_to "Cancel", cancel_reservation_path(@reservation), method: :post, class: "dropdown-item" %>
                     <% end %>
                   </div>
                 </div>
@@ -90,9 +90,9 @@
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to "View", reservation_path(reservation), class: "dropdown-item" %>
                         <% if reservation.status == "Pending" %>
-                          <%= link_to "Accept", accept_reservation_path(reservation), method: :post %>
-                          <%= link_to "Edit", edit_reservation_path(reservation) %>
-                          <%= link_to "Reject", reject_reservation_path(reservation), method: :post %>
+                          <%= link_to "Accept", accept_reservation_path(reservation), method: :post, class: "dropdown-item"%>
+                          <%= link_to "Edit", edit_reservation_path(reservation), class: "dropdown-item" %>
+                          <%= link_to "Reject", reject_reservation_path(reservation), method: :post, class: "dropdown-item" %>
                         <% end %>
                       </div>
                     </div>
