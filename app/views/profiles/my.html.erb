@@ -3,9 +3,11 @@
   <hr>
   <div class="container-lg">
     <div class="row">
-      <div class="col col-md-4">
+      <div class="col-md-4">
         <div class="card shadow mb-5 bg-body rounded">
           <div class="card-body">
+            <%# raise %>
+            <img src="https://picsum.photos/200" alt="" class="rounded-circle bg-danger ratio ratio-1x1 float-right ml-3" style="object-fit:cover; width:80px;">
             <h5 class="card-title">username placeholder</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <p><%= @user.email %></p>
@@ -15,29 +17,32 @@
           </div>
         </div>
       </div>
-      <div class="col col-md-8">
+      <div class="col-md-8">
         <h2>My Equipment</h2>
         <% @all_my_equipment.each do |equipment| %>
-          <div class="container-lg">
-            <div class="row g-0 bg-light">
-              <div class="col-4 p-0" 
-              style="
-              background-image: url(
-                <%= cl_image_path(equipment.photo.key, 
-                :transformation => {:effect => "blur:1000"}) %>); 
+          
+          <div class="card mb-3">
+            <div class="row g-0 mx-0">
+              <div class="col-4 p-0 border-right"
+              style="background-image: url(
+                <%= cl_image_path(equipment.photo.key,
+                :transformation => {:effect => "blur:1000"}) %>);
                 background-size: cover;">
-              <%# raise %>
-              <%= cl_image_tag equipment.photo.key, height: '200px', width: '100%', style: "object-fit: contain" %></div>
+                <%# raise %>
+                <div style="background-image: url(<%= cl_image_path(equipment.photo.key) %>);
+                background-size: contain; width: 100%; height: 100%; background-position: center; background-repeat: no-repeat;"></div>
+                <%#= cl_image_tag equipment.photo.key, height: 'auto', width: '', style: "object-fit: contain" %>
+              </div>
               <div class="col-8">
                 <div class="card-body">
-                  
                   <h5 class="card-title"><%= link_to equipment.name, equipment_path(equipment) %></h5>
                   <p class="text-truncate card-text" style="max-height:50px;"><%= equipment.description %></p>
-                  <%= link_to "edit", edit_equipment_path(equipment) %>
+                  <small class="text-muted"><%= link_to "edit", edit_equipment_path(equipment) %></small>
                 </div>
               </div>
             </div>
           </div>
+          
         <% end %>
         <hr>
         <h2>My Reservations</h2>
