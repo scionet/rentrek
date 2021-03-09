@@ -6,5 +6,6 @@
 <p>
 owned by <%= @equipment.user.email %>
 </p>
-
-<%= link_to "request to rent", new_equipment_reservation_path(@equipment) %>
+<% if current_user != @equipment.user %>
+  <%= link_to "Request to Rent", new_equipment_reservation_path(@equipment) %>
+<% end %>
