@@ -1,18 +1,20 @@
 <div class="container text-center">
-  <h1>Rentrek</h1>
-  <hr>
 </div>
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
     <%# debug @equipment %>
     <% @equipment.each do |equipment| %>
       <div class="p-2">
-        <%= image_tag("https://picsum.photos/600?random", height: '200px', width: '100%', style: "object-fit: cover") %>
         <div class="card">
+          <%= cl_image_tag equipment.photo.key, height: '200px', width: '100%', style: "object-fit: cover" %>
           <div class="card-body">
-            <h5 class="card-title"><%= equipment.name %></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title"><%= equipment.name %></h5>
+              <p class="card-text">$<%= equipment.price_per_day %>/day</p>
+            </div>
+            <p class="card-text"><%= equipment.description %></p>
             <%= link_to "View more", equipment_path(equipment), class: 'btn btn-primary stretched-link' %>
+
             <%# <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> %>
           </div>
         </div>

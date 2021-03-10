@@ -43,4 +43,4 @@ def seed_equipment
 end
 
 seed_categories
-seed_equipment
+# seed_equipment
