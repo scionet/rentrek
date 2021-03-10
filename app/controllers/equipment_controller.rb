@@ -4,6 +4,11 @@ class EquipmentController < ApplicationController
 
   def index
     @equipment = policy_scope(Equipment).order(created_at: :desc)
+    if params[:query].present?
+      @equipment = Equipment.search_by_equipment_name(params[:query])
+    else
+      @equipment
+    end
   end
 
   def show
