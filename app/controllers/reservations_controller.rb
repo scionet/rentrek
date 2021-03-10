@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+    before_action :set_reservation, only: [:show, :edit, :update, :destroy, :accept, :reject, :cancel]
 
     def show
         authorize @reservation
@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.user = current_user
         @reservation.equipment = @equipment
-        @reservation[:status] = "pending"
+        @reservation[:status] = "Pending"
         authorize @reservation
         if @reservation.save
             redirect_to reservation_path(@reservation)
@@ -36,14 +36,26 @@ class ReservationsController < ApplicationController
         if @reservation.save
             redirect_to reservation_path(@reservation)
         else
-            render :new
+            render :update
         end 
     end
 
     def destroy
         authorize @reservation
         @reservation.destroy
-        redirect_to :root
+        redirect_to profile_path(current_user)
+    end
+
+    def accept
+        responses("Accepted")
+    end
+
+    def reject
+        responses("Rejected")
+    end
+
+    def cancel
+        responses("Cancelled")
     end
 
     private
@@ -54,5 +66,15 @@ class ReservationsController < ApplicationController
 
     def set_reservation
         @reservation = Reservation.find(params[:id])
+    end
+
+    def responses(action)
+        authorize @reservation
+        @reservation[:status] = action
+        if @reservation.save
+            redirect_to profile_path(current_user)
+        else
+            redirect_to reservation_path(@reservation)
+        end
     end
 end

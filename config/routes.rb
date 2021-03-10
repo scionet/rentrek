@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create]
   end
   resources :reservations, only: [:show, :edit, :update, :destroy]
+  post 'reservations/:id/accept', to: 'reservations#accept', as: 
+  :accept_reservation
+  post 'reservations/:id/cancel', to: 'reservations#cancel', as: :cancel_reservation
+  post 'reservations/:id/reject', to: 'reservations#reject', as: :reject_reservation
 
   # get 'profiles', to: 'profiles#show', as: "profiles"
   get 'profile', to: 'profiles#my'
