@@ -4,6 +4,12 @@ class EquipmentController < ApplicationController
 
   def index
     @equipment = policy_scope(Equipment).order(created_at: :desc)
+    @markers = @equipment.geocoded.map do |equipment|
+      {
+        lat: equipment.latitude,
+        lng: equipment.longitude
+      }
+    end
   end
 
   def show
@@ -52,6 +58,6 @@ class EquipmentController < ApplicationController
   end
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :category_id, :price_per_day, :photo)
+    params.require(:equipment).permit(:name, :description, :category_id, :price_per_day, :photo, :location)
   end
 end
