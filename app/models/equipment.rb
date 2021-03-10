@@ -6,7 +6,10 @@ class Equipment < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_equipment_name,
-    against: [ :name ],
+    against: [ :name, 'A' ],
+    associated_against: {
+      category: [ :name ]
+    },
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
