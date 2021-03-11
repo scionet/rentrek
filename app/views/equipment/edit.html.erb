@@ -4,5 +4,6 @@
   <%= f.input :price_per_day %>
   <%#   https://github.com/heartcombo/simple_form#collections %>
   <%= f.association :category, collection: Category.order(:name), prompt: "Choose a Category" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>
