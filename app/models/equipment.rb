@@ -1,6 +1,6 @@
 class Equipment < ApplicationRecord
   has_many :reservations, dependent: :destroy
-  has_one_attached :photo
+  has_many_attached :photos
   belongs_to :user
   belongs_to :category
 
