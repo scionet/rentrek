@@ -9,6 +9,7 @@ class EquipmentController < ApplicationController
         lat: equipment.latitude,
         lng: equipment.longitude
       }
+    end
     if params[:query].present?
       @equipment = Equipment.search_by_equipment_name(params[:query])
     else
