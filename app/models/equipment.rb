@@ -7,5 +7,9 @@ class Equipment < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true, length: { maximum: 1000, too_long: "%{count} characters is the maximum allowed" }
   validates :price_per_day, presence: true, numericality: true
-  validates :available, presence: true
+  # validates :available, presence: true
+  validates :location, presence: true
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
