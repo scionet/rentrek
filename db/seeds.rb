@@ -16,6 +16,76 @@ require 'nokogiri'
 
 
 
+@fake_user = [
+    {
+        "name": "Sasha Ho",
+        "email": "sasha.ho@gmail.com",
+        "position": "Administrative Assistant",
+        "photo": "https:\/\/images.pexels.com\/photos\/415829\/pexels-photo-415829.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb"
+    },
+    {
+        "name": "Giselle Franks",
+        "email": "giselle.franks@gmail.com",
+        "position": "Marketing",
+        "photo": "https:\/\/images.generated.photos\/aNQYYS0hAZyxZ0qlqKbI-bERqUBV36z8xUK5jacrLEs\/rs:fit:512:512\/Z3M6Ly9nZW5lcmF0\/ZWQtcGhvdG9zLzA5\/OTk4ODIuanBn.jpg"
+    },
+    {
+        "name": "Kent Sosa",
+        "email": "kent.sosa@gmail.com",
+        "position": "Administrative Assistant",
+        "photo": "https:\/\/images.generated.photos\/z_w45-PQ28jY08f8O4BMykbnCVpwXsaoDvzoBgPYCg0\/rs:fit:512:512\/Z3M6Ly9nZW5lcmF0\/ZWQtcGhvdG9zL3Yy\/XzA4MzYxMDIuanBn.jpg"
+    },
+    {
+        "name": "Jenil Gogari",
+        "email": "jenil.gogari@gmail.com",
+        "position": "Senior Developer",
+        "photo": "https:\/\/uifaces.co\/our-content\/donated\/xB857nIu.jpg"
+    },
+    {
+        "name": "Amiya Potts",
+        "email": "amiya.potts@gmail.com",
+        "position": "Accounting",
+        "photo": "https:\/\/images.unsplash.com\/photo-1548537412-08ab4040f199?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+    },
+    {
+        "name": "Adolfo Hess",
+        "email": "adolfo.hess@gmail.com",
+        "position": "Sales",
+        "photo": "https:\/\/images.generated.photos\/0PjDpiMOeF-HXb2lvBkGiApuNNESjm1YlhAMlJVT6PQ\/rs:fit:512:512\/Z3M6Ly9nZW5lcmF0\/ZWQtcGhvdG9zL3Yy\/XzA4MTg2OTYuanBn.jpg"
+    },
+    {
+        "name": "Alex Diwa",
+        "email": "alex.diwa@gmail.com",
+        "position": "Call Center Representative",
+        "photo": "https:\/\/uifaces.co\/our-content\/donated\/0VZ0boL5.png"
+    },
+    {
+        "name": "Mary Mart\u00c3\u00adnez",
+        "email": "mary.mart\u00c3\u00adnez@gmail.com",
+        "position": "Part Time",
+        "photo": "https:\/\/uifaces.co\/our-content\/donated\/Zh_4oc5l.jpg"
+    },
+    {
+        "name": "Katie Holmes",
+        "email": "katie.holmes@gmail.com",
+        "position": "Customer Service Representative",
+        "photo": "https:\/\/images-na.ssl-images-amazon.com\/images\/M\/MV5BNTA2NjY5OTkzNl5BMl5BanBnXkFtZTcwMDE2NTkxNA@@._V1_UX172_CR0,0,172,256_AL_.jpg"
+    },
+    {
+        "name": "Taelyn Dickens",
+        "email": "taelyn.dickens@gmail.com",
+        "position": "Medical Assistant",
+        "photo": "https:\/\/i.imgur.com\/PENmJBu.jpg"
+    }
+]
+@fake_user.each do |user| 
+  puts user[:name]
+end
+
+
+binding.pry
+
+
 
 def seed_categories_enhanced
   puts 'Cleaning categories...'
@@ -53,14 +123,6 @@ def seed_categories_enhanced
   puts "__________________"
 end
 
-# 
-
-# binding.pry
-
-
-
-
-
 def seed_categories
   puts 'Cleaning categories...'
   puts "__________________"
@@ -78,23 +140,25 @@ def seed_categories
   puts "__________________"
 end
 
-
-
-
-
 def serialize_image(img_url)
   file = URI.open(img_url)
 end
 
-def user_avatar
+def seed_users
+  puts "Clearing all #{User.count}User database..."
+  puts "__________________"
+  User.destroy_all
   
+  # fake user profile
+  fake_user = {
+    # Generates an RFC 2606 compliant fake email, which means it will never deliver successfully
+    email: Faker::Internet.safe_email(name: (Faker::Name.first_name)), #=> "nancy@example.net"
+    password: "fakeuser"
+  }
+  10.times do |user|
+    user.create(email: fake_user[:email], password: fake_user[:password])
+  end
 end
-
-
-
-
-
-
 
 def seed_equipment
   puts 'Cleaning database...'
@@ -117,7 +181,6 @@ def seed_equipment
   
   puts "Generating equipment for 2 test users..."
   puts "__________________"
-  
   
   e = Equipment.create(
     name: "Kites FUELs 11m. et 9m. 2018",
@@ -150,8 +213,7 @@ def seed_equipment
   puts "Equipment Generated!"
 end
 
-
 # seed_categories
 
 # seed_categories_enhanced
-seed_equipment
+# seed_equipment
