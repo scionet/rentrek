@@ -4,6 +4,11 @@ class EquipmentController < ApplicationController
 
   def index
     @equipment = policy_scope(Equipment).order(created_at: :desc)
+    @markers = @equipment.geocoded.map do |equipment|
+      {
+        lat: equipment.latitude,
+        lng: equipment.longitude
+      }
     if params[:query].present?
       @equipment = Equipment.search_by_equipment_name(params[:query])
     else
@@ -57,6 +62,6 @@ class EquipmentController < ApplicationController
   end
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :category_id, :price_per_day, :photo)
+    params.require(:equipment).permit(:name, :description, :category_id, :price_per_day, :location, photos: [])
   end
 end
