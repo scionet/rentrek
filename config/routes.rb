@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   #   # omniauth_callbacks: 'omni_auth'
   # }
 
-  # root to: 'application#home'
-  root to:  'equipment#index'
+  root to: 'pages#home'
 
   devise_scope :user do
     get 'sign_in', to: 'users/sessions#new'
@@ -29,4 +28,6 @@ Rails.application.routes.draw do
   # get 'profiles', to: 'profiles#show', as: "profiles"
   get 'profile', to: 'profiles#my'
   get 'profile/:id', to: 'profiles#show'
+
+  get 'home', to: 'page#home'
 end

@@ -11,10 +11,11 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <div class="container-lg">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+    <% if notice.present? %>
+      <div class="alert alert-success mb-0" role="alert"><%= notice %></div>
+    <% elsif alert.present? %>
+      <div class="alert alert-warning mb-0" role="alert"><%= alert %></div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>
