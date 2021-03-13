@@ -3,27 +3,32 @@
   <hr>
   <div class="container-lg">
     <div class="row">
-      <div class="col col-md-4">
-        <div class="card-body">
-          <% if @user.avatar.attached? %>
-            <%= cl_image_tag @user.avatar.key, height: '60px', width: '60px', style: "object-fit: cover", class: "rounded-circle"  %>
-          <% else %>
-            <div class="border-3 rounded-circle d-flex" width="40" height="40">
-              <i class="bi bi-person-bounding-box"></i>
+      <div class="col col-md-4 pb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <% if @user.avatar.attached? %>
+                <%= cl_image_tag @user.avatar.key, height: '160px', width: '160px', style: "object-fit: cover;", class: "rounded-circle pb-3"  %>
+              <% else %>
+                <div class="border-3 rounded-circle d-flex" width="40" height="40">
+                  <i class="bi bi-person-bounding-box"></i>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+            <div class="col">
+
+              <h6 class="card-subtitle mb-2 text-muted">
+                <p><%= @user.email %></p>
+              </h6>
+              <%= link_to "Edit profile", edit_user_registration_path(@user), class: "btn btn-outline-secondary btn-sm" %>
+            </div>
+          </div>
 
 
 
-
-          <h6 class="card-subtitle mb-2 text-muted">
-            <p><%= @user.email %></p>
-          </h6>
-          <%= link_to "Edit profile", edit_user_registration_path(@user), class: "dropdown-item" %>
         </div>
-
       </div>
-      <div class="col-8">
+      <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-body">
             <h2>My Equipment</h2>
