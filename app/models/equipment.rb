@@ -7,7 +7,7 @@ class Equipment < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_equipment_name,
-    against: [ :name, 'A' ],
+    against: [ :name ],
     associated_against: {
       category: [ :name ]
     },
