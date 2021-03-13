@@ -8,7 +8,7 @@
     </div>
     <div class="col">
       <h1><%= @equipment.name %></h1>
-      <h4 class="price-per-day-color">Price/day: $<%= @equipment.price_per_day %></h4>
+      <h4 class="price-per-day-color">Price/day: <%= number_to_currency(@equipment.price_per_day) %></h4>
       <hr>
       <%= @equipment.description %>
       <hr>
@@ -26,4 +26,4 @@
 <%# <h3>Related Equipment:</h3>
 <%= @related_equipment.each do |equipment| %>
 <%# <%= @equipment.name %>
-<%# <% end %> 
+<%# <% end %>

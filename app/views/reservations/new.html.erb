@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col">
         <h2><%= @equipment.name %></h2>
-        <h4 class="price-per-day-color">Price/day: $<%= @equipment.price_per_day %></h4>
+        <h4 class="price-per-day-color">Price/day: <%= number_to_currency(@equipment.price_per_day) %></h4>
         <p class="owner-color">
         Owner: <%= @equipment.user.email %>
         </p>
