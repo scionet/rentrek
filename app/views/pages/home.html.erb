@@ -62,7 +62,7 @@
             </p>
             <div class="d-flex justify-content-between">
               <%= link_to "View more", equipment_path(equipment), class: 'btn btn-sm btn-outline-secondary stretched-link' %>
-              <small class="text-muted">$<%= equipment.price_per_day %>/day</small>
+              <small class="text-muted"><%= number_to_currency(equipment.price_per_day) %>/day</small>
             </div>
             <%# <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> %>
             <%# <div class="d-flex justify-content-between align-items-center">
