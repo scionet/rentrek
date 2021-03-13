@@ -1,7 +1,33 @@
-This is where you make a reservation on a piece of equipment
-
-<%= simple_form_for [ @equipment, @reservation ] do |f| %>
-  <%= f.input :start_date, as: :date, html5: true%>
-  <%= f.input :end_date, as: :date, html5: true%>
-  <%= f.button :submit %>
-<% end %>
+<div class="container-lg">
+  <h1>Book Your Rental</h1>
+  <hr>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2><%= @equipment.name %></h2>
+        <h4 class="price-per-day-color">Price/day: $<%= @equipment.price_per_day %></h4>
+        <p class="owner-color">
+        Owner: <%= @equipment.user.email %>
+        </p>
+        <%= @equipment.description.first(100) %>
+      </div>
+      <div class="col">
+        <h2>Booking Policies</h2>
+          <ul>
+          <li>Payment in full is required at time of booking.</li>
+          <li>Cancellations up to 48 hours prior to rental are fully refundable.</li>
+          <li>Rental period begins at the scheduled time.</li>
+          <li>Failure to return on time will result in additional charges.</li>
+          </ul>
+      </div>
+    </div>
+  <hr>
+  <h2>Select Your Dates</h2>
+        <%= simple_form_for [ @equipment, @reservation ] do |f| %>
+        <%= f.input :start_date, as: :date, html5: true%>
+        <%= f.input :end_date, as: :date, html5: true%>
+        <%= f.button :submit, class: "btn btn-primary btn-block"%>
+        <% end %>
+  </div>
+</div>

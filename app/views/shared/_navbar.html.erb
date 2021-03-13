@@ -8,7 +8,18 @@
     <span class="navbar-toggler-icon"></span>
   </button> %>
 
-
+      <div class="form-inline">
+        <div class="col-sm">
+          <%= form_tag equipment_index_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control, placeholder",
+              placeholder: "Search for your next rental gear"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -21,12 +32,12 @@
         <li class="nav-item active">
           <%= link_to 'List equipment for rent', new_equipment_path, class: 'btn btn-outline-primary my-2 my-sm-0 ml-2' %>
         </li>
-        
+
         <li class="nav-item dropdown">
 
           <%= tag.i class: "bi bi-person-circle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          
+
             <%= link_to "My profile", profile_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
