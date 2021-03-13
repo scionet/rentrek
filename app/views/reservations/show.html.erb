@@ -19,6 +19,10 @@
       </li>
     </ul>
     <div class="card-body text-center">
+      <%# <a href="#" class="card-link">Edit Reservation</a> %>
+      <%= link_to "Edit Reservation", edit_reservation_path(@reservation), class:"card-link" %>
+      <%# <a href="#" class="card-link">Cancel Reservation</a> %>
+      <%= link_to "Cancel Reservation", cancel_reservation_path(@reservation), method: :post, class: "card-link", data: { confirm: "Are you sure?" }%>
       <p>Reservation Status: <%= @reservation.status %></p>
     </div>
   </div>

@@ -2,33 +2,18 @@
   <%= link_to :root, class: "navbar-brand" do %>
     <%= image_tag "outdoors-icons/Cone_hop.svg" %>
     <div class="text-logo navbar-brand position-absolute top-50 start-50 translate-middle">Rentrek</div>
-    <% end %>
+  <% end %>
 
   <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> %>
 
-      <div class="form-inline">
-        <div class="col-sm">
-          <%= form_tag equipment_index_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control, placeholder",
-              placeholder: "Search for your next rental gear"
-            %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to"#", class: "dropdown-item px-2"  do %>
-            <i class="bi bi-bell-fill"></i>
-          <% end %>
-        </li>
+
         <li class="nav-item active">
           <%= link_to 'List equipment for rent', new_equipment_path, class: 'btn btn-outline-primary my-2 my-sm-0 ml-2' %>
         </li>

@@ -57,6 +57,7 @@ class EquipmentController < ApplicationController
   def destroy
     authorize @equipment
     @equipment.destroy
+    redirect_to profile_path(current_user)
   end
 
   private
