@@ -9,7 +9,7 @@
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <p class="price-per-day-color">Price/day: $<%= @reservation.equipment.price_per_day %></p>
+        <p class="price-per-day-color">Price/day: <%= number_to_currency(@reservation.equipment.price_per_day) %></p>
         <p class="owner-color">Owner: <%= @reservation.equipment.user.email %></p>
       </li>
       <li class="list-group-item">
@@ -17,13 +17,9 @@
         <p>Start Date: <%= @reservation.start_date %></p>
         <p>End Date: <%= @reservation.end_date %></p>
       </li>
-      <li class="list-group-item">
-        <p>Reservation Status: <%= @reservation.status %></p>
-      </li>
     </ul>
     <div class="card-body text-center">
-      <a href="#" class="card-link">Edit Reservation</a>
-      <a href="#" class="card-link">Cancel Reservation</a>
+      <p>Reservation Status: <%= @reservation.status %></p>
     </div>
   </div>
 </div>
