@@ -1,9 +1,27 @@
-<% @equipment.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<%# cl_image_tag @equipment.photos.key, height: 300, width: 400, crop: :fill %>
-<h1><%= @equipment.name %></h1>
-<h2>price per day: $<%= @equipment.price_per_day %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% @equipment.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 500, width: 600, crop: :fill %>
+      <% end %>
+      <%# cl_image_tag @equipment.photos.key, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="col">
+      <h1><%= @equipment.name %></h1>
+      <h4 class="price-per-day-color">Price/day: $<%= @equipment.price_per_day %></h4>
+      <hr>
+      <%= @equipment.description %>
+      <hr>
+      <p class="owner-color">
+      Owner: <%= @equipment.user.email %>
+      </p>
+
+      <% if current_user != @equipment.user %>
+      <%= link_to "Check Availibility", new_equipment_reservation_path(@equipment), class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 <hr>
 <%= @equipment.description %>
 <hr>

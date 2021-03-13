@@ -10,10 +10,17 @@ class EquipmentController < ApplicationController
         lng: equipment.longitude
       }
     end
+    if params[:query].present?
+      @equipment = Equipment.search_by_equipment_name(params[:query])
+    else
+      @equipment
+    end
   end
 
   def show
     authorize @equipment
+    # trying to show all equipment in same category, not working
+    # @related_equipment = Equipment.where(category_id: @equipment.category_id)
   end
 
   def new

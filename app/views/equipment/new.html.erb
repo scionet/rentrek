@@ -1,12 +1,15 @@
-<h1>New Equipment</h1>
-<%# frozen_string_literal: true %>
-<%= simple_form_for @equipment do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price_per_day %>
-  <%= f.input :location %>
-  <%#   https://github.com/heartcombo/simple_form#collections %>
-  <%= f.association :category, collection: Category.order(:name), prompt: "Choose a Category" %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container-lg">
+  <h1>List Your Equipment for Rent</h1>
+  <hr>
+  <%# frozen_string_literal: true %>
+  <%= simple_form_for @equipment do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :price_per_day %>
+    <%= f.input :location %>
+    <%#   https://github.com/heartcombo/simple_form#collections %>
+    <%= f.association :category, collection: Category.order(:name), prompt: "Choose a Category" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
