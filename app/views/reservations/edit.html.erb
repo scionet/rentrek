@@ -1,7 +1,35 @@
-<h1>Reservation edit page</h1>
-
-<%= simple_form_for [ @equipment, @reservation ] do |f| %>
-  <%= f.input :start_date, as: :date, html5: true%>
-  <%= f.input :end_date, as: :date, html5: true%>
-  <%= f.button :submit %>
-<% end %>
+<div class="container-lg">
+  <h1>Edit My Reservation</h1>
+  <hr>
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h4 class="card-title"><%= @reservation.equipment.name %></h4>
+      <p class="card-text"><%= @reservation.equipment.description.first(100) %></p>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p class="price-per-day-color">Price/day: $<%= @reservation.equipment.price_per_day %></p>
+          <p class="owner-color">Owner: <%= @reservation.equipment.user.email %></p>
+        </li>
+        <li class="list-group-item">
+          <p>Renter: <%= @reservation.user.email %></p>
+          <p>Start Date: <%= @reservation.start_date %></p>
+          <p>End Date: <%= @reservation.end_date %></p>
+        </li>
+        <li class="list-group-item">
+          <p>Reservation Status: <%= @reservation.status %></p>
+        </li>
+      </ul>
+      <div class="card-body text-center">
+          <%= simple_form_for [ @equipment, @reservation ] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true%>
+          <%= f.input :end_date, as: :date, html5: true%>
+          <%= f.button :submit %>
+          <% end %>
+      </div>
+      <div class="card-body text-center">
+       <a href="#" class="card-link">Cancel Reservation</a>
+      </div>
+    </div>
+  </div>
+</div>

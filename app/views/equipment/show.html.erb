@@ -3,8 +3,6 @@
     <div class="col">
       <% @equipment.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 500, width: 600, crop: :fill %>
-      <br><br>
-      <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
       <% end %>
       <%# cl_image_tag @equipment.photos.key, height: 300, width: 400, crop: :fill %>
     </div>
@@ -25,4 +23,7 @@
   </div>
 </div>
 <hr>
-<p>Placeholder for related categories</p>
+<%# <h3>Related Equipment:</h3>
+<%= @related_equipment.each do |equipment| %>
+<%# <%= @equipment.name %>
+<%# <% end %> 
