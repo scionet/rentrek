@@ -12,9 +12,17 @@
   <body>
     <%= render 'shared/navbar' %>
     <% if notice.present? %>
-      <div class="alert alert-success mb-0" role="alert"><%= notice %></div>
+      <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <a data-dismiss="alert" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </div>
     <% elsif alert.present? %>
-      <div class="alert alert-warning mb-0" role="alert"><%= alert %></div>
+      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <a data-dismiss="alert" aria-label="Close">
+        <i class="fas fa-times"></i>  
+      </div>
     <% end %>
     <%= yield %>
   </body>
