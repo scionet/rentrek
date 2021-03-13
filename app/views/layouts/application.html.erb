@@ -11,10 +11,19 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <div class="container-lg">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+    <% if notice.present? %>
+      <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <a data-dismiss="alert" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </div>
+    <% elsif alert.present? %>
+      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <a data-dismiss="alert" aria-label="Close">
+        <i class="fas fa-times"></i>  
+      </div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

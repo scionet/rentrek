@@ -1,9 +1,24 @@
 // Specific CSS for your home-page
 
-// .card-description {
-//   height: 300px;
-// }
+.card-category {
+  margin-top: 16PX;
+}
 
+.img-category {
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  position: relative;
+}
+
+.more-equipment {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 // .card {
 //   background-size: contain;
 // }
