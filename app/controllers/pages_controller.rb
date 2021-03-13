@@ -6,6 +6,6 @@ class PagesController < ApplicationController
       authorize @user
     end
     @categories = Category.all
-    @new_equipment = Equipment.last(5)
+    @equipment = Equipment.all
   end
 end
