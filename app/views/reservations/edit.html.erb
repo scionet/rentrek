@@ -20,13 +20,13 @@
           <p>Reservation Status: <%= @reservation.status %></p>
         </li>
       </ul>
-    <div class="card-body text-center">
-        <%= simple_form_for [ @equipment, @reservation ] do |f| %>
-        <%= f.input :start_date, as: :date, html5: true%>
-        <%= f.input :end_date, as: :date, html5: true%>
-        <%= f.button :submit %>
-        <% end %>
-    </div>
+      <div class="card-body text-center">
+          <%= simple_form_for [ @equipment, @reservation ] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true%>
+          <%= f.input :end_date, as: :date, html5: true%>
+          <%= f.button :submit %>
+          <% end %>
+      </div>
       <div class="card-body text-center">
        <a href="#" class="card-link">Cancel Reservation</a>
       </div>

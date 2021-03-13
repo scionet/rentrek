@@ -19,6 +19,8 @@ class EquipmentController < ApplicationController
 
   def show
     authorize @equipment
+    # trying to show all equipment in same category, not working
+    # @related_equipment = Equipment.where(category_id: @equipment.category_id)
   end
 
   def new
