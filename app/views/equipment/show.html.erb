@@ -8,7 +8,17 @@
 <%= @equipment.description %>
 <hr>
 <p>
-owned by <%= @equipment.user.email %>
+
+  <% if @equipment.user.avatar.attached? %>
+    <%= cl_image_tag @equipment.user.avatar.key, height: '60px', width: '60px', style: "object-fit: cover", class: "rounded-circle"  %>
+  <% else %>
+    <div class="border-3 rounded-circle d-flex" width="40" height="40">
+      <i class="bi bi-person-bounding-box"></i>
+    </div>
+  <% end %>
+  owned by <%= @equipment.user.email %>
+
+
 </p>
 <% if current_user != @equipment.user %>
   <%= link_to "Request to Rent", new_equipment_reservation_path(@equipment) %>
