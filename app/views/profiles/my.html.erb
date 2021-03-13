@@ -4,23 +4,31 @@
   <div class="container-lg">
     <div class="row">
       <div class="col col-md-4">
-        <div class="card shadow mb-5 bg-body rounded">
-          <div class="card-body">
-            <h5 class="card-title">username placeholder</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-              <p><%= @user.email %></p>
-            </h6>
-            <p class="card-text">This user is lazy. They didn't leave any message here.</p>
-            <a href="#" class="card-link">edit_placeholder</a>
-          </div>
+        <div class="card-body">
+          <% if @user.avatar.attached? %>
+            <%= cl_image_tag @user.avatar.key, height: '60px', width: '60px', style: "object-fit: cover", class: "rounded-circle"  %>
+          <% else %>
+            <div class="border-3 rounded-circle d-flex" width="40" height="40">
+              <i class="bi bi-person-bounding-box"></i>
+            </div>
+          <% end %>
+
+
+
+
+          <h6 class="card-subtitle mb-2 text-muted">
+            <p><%= @user.email %></p>
+          </h6>
+          <%= link_to "Edit profile", edit_user_registration_path(@user), class: "dropdown-item" %>
         </div>
+
       </div>
       <div class="col-8">
         <div class="card mb-4">
           <div class="card-body">
             <h2>My Equipment</h2>
-              <hr>
-              <% @all_my_equipment.each do |equipment| %>
+            <hr>
+            <% @all_my_equipment.each do |equipment| %>
               <div class="d-flex justify-content-between">
                 <div class="mb-4">
                   <p><%= equipment.name%></p>
@@ -51,7 +59,7 @@
                 <div>
                   <%= reservation.equipment.name %> : 
                   <%= reservation.start_date %> ~
-                  <%= reservation.end_date %>          
+                  <%= reservation.end_date %>
                 </div>
                 <div class="dropdown">
                   <div class="d-flex ml-4">
@@ -71,7 +79,7 @@
               </div>
             <% end %>
           </div>
-        </div> 
+        </div>
         <div class="card mb-4">
           <div class="card-body">
             <h2>Incoming Requests</h2>
