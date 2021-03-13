@@ -1,0 +1,35 @@
+
+
+{
+      "name": "MSR Elixir 3P Rental",
+      "description": "With all the features you expect from MSR, the freestanding Elixir 3 tent offers first-time (and long-time) backpackers an extremely livable, surprisingly lightweight backpacking tent at a great value.", 
+      "category": "Tents",
+      "price_per_day": "random_price_per_day",
+      "location": "Montreal, Qc",
+      "item_url": "https://www.outdoorsgeek.com/product/msr-elixir-3p-rental/",
+      "SPECS": {
+                    "Packed Weight": "6lbs. 3oz.",
+                    "Vestibule Volume": "18cu. ft.",
+                    "Floor Area": "39.5sq. ft.",
+                    "Tent Volume": "63cu. ft.",
+                    "Number of Doors": "2",
+                    "Body Weight": "2lbs, 2oz.",
+                    "Frame Weight": "1lb. 10oz."
+      }
+},{
+      "name": "MSR Elixir 3P Rental",
+      "description": "With all the features you expect from MSR, the freestanding Elixir 3 tent offers first-time (and long-time) backpackers an extremely livable, surprisingly lightweight backpacking tent at a great value.",
+      "category": "Tents",
+      "price_per_day": "random_price_per_day",
+      "location": "Montreal, Qc",
+      "item_url": "https://www.outdoorsgeek.com/product/msr-elixir-3p-rental/",
+      "SPECS": {
+                    "Packed Weight": "6lbs. 3oz.",
+                    "Vestibule Volume": "18cu. ft.",
+                    "Floor Area": "39.5sq. ft.",
+                    "Tent Volume": "63cu. ft.",
+                    "Number of Doors": "2",
+                    "Body Weight": "2lbs, 2oz.",
+                    "Frame Weight": "1lb. 10oz."
+      }
+}
