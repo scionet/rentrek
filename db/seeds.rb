@@ -86,7 +86,35 @@ end
     ["https://www.outdoorsgeek.com/product/deuter-act-lite-6010-slim-line-backpack-rental/",
       "https://www.outdoorsgeek.com/product/gregory-jade-backpack-rental/",
       "https://www.outdoorsgeek.com/product/backpack-raincover-rental/"]
-    ]
+  ],["Tents", 
+    ["https://www.outdoorsgeek.com/product/marmot-tungsten-ultralight-1-person-tent-rental/",
+      "https://www.outdoorsgeek.com/product/big-agnes-copper-spur-hv-ul-2p-tent-rental/",
+      "https://www.outdoorsgeek.com/product/marmot-limelight-3p-rental/",
+      "https://www.outdoorsgeek.com/product/marmot-limestone-8p-rental/"]
+  ],["Sleeping Bags", 
+    ["https://www.outdoorsgeek.com/product/north-face-campforter-double-20-sleeping-bag-rental/",
+      "https://www.outdoorsgeek.com/product/marmot-kids-trestles-30-degree-bag-rental/",
+      "https://www.outdoorsgeek.com/product/the-north-face-inferno-20-degree-down-bag-rental/"]
+  ],["Snowshoes", 
+    ["https://www.outdoorsgeek.com/product/kids-snowshoe-rental/",
+      "https://www.outdoorsgeek.com/product/shoe-traction-chains-rental/",
+      "https://www.outdoorsgeek.com/product/black-diamond-cirque-gaiter-rental/",
+      "https://www.outdoorsgeek.com/product/adult-snowshoe-rental/"]
+  ],["Sleeping Pads", 
+    ["https://www.outdoorsgeek.com/product/klymit-insulated-hammock-v-pad-rental/",
+      "https://www.outdoorsgeek.com/product/big-agnes-insulated-air-core-ultra-pad-rental/",
+      "https://www.outdoorsgeek.com/product/klymit-double-v-pad-rental/"]
+  ],["Cooking", 
+    ["https://www.outdoorsgeek.com/product/msr-superfly-stove-without-autostart-rental/",
+      "https://www.outdoorsgeek.com/product/jetboil-minimo-rental/",
+      "https://www.outdoorsgeek.com/product/ao-soft-side-cooler-48-pack-rental/",
+      "https://www.outdoorsgeek.com/product/gsi-pinnacle-dualist-cookware-2-rental/"]
+  ],["GPS", 
+    ["https://www.outdoorsgeek.com/product/inreach-mini-rental/",
+      "https://www.outdoorsgeek.com/product/inreach-explorer-rental/"]
+  ],["Bear Cans", 
+    ["https://www.outdoorsgeek.com/product/bear-canister-rental/"]
+  ],
 ]
 
 def seed_equipment_enhanced(users)
