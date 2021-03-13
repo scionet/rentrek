@@ -60,51 +60,134 @@ require 'nokogiri'
     "email": "mary.mart\u00c3\u00adnez@gmail.com",
     "position": "Part Time",
     "photo": "https:\/\/uifaces.co\/our-content\/donated\/Zh_4oc5l.jpg"
-  },
-  {
-    "name": "Katie Holmes",
-    "email": "katie.holmes@gmail.com",
-    "position": "Customer Service Representative",
-    "photo": "https:\/\/images-na.ssl-images-amazon.com\/images\/M\/MV5BNTA2NjY5OTkzNl5BMl5BanBnXkFtZTcwMDE2NTkxNA@@._V1_UX172_CR0,0,172,256_AL_.jpg"
-  },
-  {
-    "name": "Taelyn Dickens",
-    "email": "taelyn.dickens@gmail.com",
-    "position": "Medical Assistant",
-    "photo": "https:\/\/i.imgur.com\/PENmJBu.jpg"
   }
 ] # from ui faces API
-
-
-# --------------------------------------------
-def seed_users
-  
-  puts "Clearing all #{User.count} from User database..."
-  puts "__________________"
-  Equipment.destroy_all
-  User.destroy_all
-  
-  @fake_users.each do |fake_user|
-    
-    file = URI.open(fake_user[:photo])
-    new_user = User.create(email: fake_user[:email], password: "fakeuser")
-    # attach avatar
-    new_user.avatar.attach(io: file, filename: "user_avatar.png", content_type: 'image/png')
-    # new_user.avatar.attached? #=> true
-    # new_user.avatar.key #=> "zmqyg9rj91387d763muzy1vvda4t"
-  end
-  
-end
-# seed_users 
-# User.all #=> [#<User id: 55, email: "kent.sosa@gmail.com", created_at: "2021-03-12 23:40:00", updated_at: "2021-03-12 23:40:00">, ...]
-# ---------------------------------------------
-
 
 def scrape_elements(url, selector)
   html_file = open(url).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(selector)
 end
+
+def scrape_product(url)
+  html_file = open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+
+  html_doc.search(selector)
+  # .product_title
+  # woocommerce-product-details__short-description
+  gear = {
+        name:   html_doc.search("h1.product_title").text,
+        description: html_doc.search(".woocommerce-product-details__short-description").text.strip,
+        user_id: User.select(:id).where(email: user.email).first[:id],
+        category: random_category,
+        # document.querySelector("p.price bdi:last-child").lastChild.data
+        price_per_day: random_price_per_day,
+        location: "Montreal, Qc"
+  }
+      e.photos.attach( io: URI.open("https://picsum.photos/600/400?#{random_category.name}"), filename: "thumnail.png",  content_type: 'image/png')
+
+
+end
+
+def seed_equipment_enhanced(users)
+  puts 'Cleaning database...'
+  puts "__________________"
+  # Equipment.destroy_all
+  # User.destroy_all
+  
+  
+  
+  # e = Equipment.create(
+  #   name: "Kites FUELs 11m. et 9m. 2018",
+  #   description: random_description,
+  #   user_id: user1.id,
+  #   category: Category.order(Arel.sql('RANDOM()')).first,
+  #   price_per_day: 30,
+  #   location: "Montreal, Qc"
+  # )
+  
+  
+  # e.photos.attach( io: URI.open("https://picsum.photos/200/300"), filename: "thumnail.png",  content_type: 'image/png')
+  # e.save
+  equipment_urls = [
+    ["Tents",
+    "https://www.outdoorsgeek.com/product/deuter-act-lite-6010-slim-line-backpack-rental/",
+    "https://www.outdoorsgeek.com/product/gregory-jade-backpack-rental/",
+    "https://www.outdoorsgeek.com/product/backpack-raincover-rental/",
+    "https://www.outdoorsgeek.com/product/gregory-baltoro-backpack-rental/",
+    "https://www.outdoorsgeek.com/product/shoe-traction-chains-rental/"
+  ]
+  users.each do |user|
+    3.times do |e|
+      prng = Random.new
+      random_title = Faker::Lorem.sentence
+      random_description = Faker::Lorem.paragraph(sentence_count: prng.rand(2..4))
+      random_price_per_day = prng.rand(6..40)
+      random_category = Category.order(Arel.sql('RANDOM()')).first
+
+      
+      # html_file = open(url).read
+      # html_doc = Nokogiri::HTML(html_file)
+      # html_doc.search(selector)
+
+      e =  Equipment.create(
+        name: random_title,
+        description: random_description,
+        user_id: User.select(:id).where(email: user.email).first[:id],
+        category: random_category,
+        price_per_day: random_price_per_day,
+        location: "Montreal, Qc"
+      )
+      e.photos.attach( io: URI.open("https://picsum.photos/600/400?#{random_category.name}"), filename: "thumnail.png",  content_type: 'image/png')
+      e.save if e.valid?
+      
+      puts "#{e.name} created"
+      
+    end
+  end
+  puts "Equipment Generated!"
+end
+
+
+# --------------------------------------------
+@fake_users_created = []
+def seed_users
+  
+  puts "Clearing all #{@fake_users_created.count} fake users from User database..."
+  puts "__________________"
+  @fake_users_created.each do |usr|
+    Equipment.where(user_id: usr.id).each do |equipment|
+      equipment.destroy
+    end
+    usr.destroy
+  end
+  @fake_users_created = []
+  # binding.pry
+
+  # ----------
+  Equipment.destroy_all
+  User.destroy_all
+  # ----------
+  @fake_users.each do |fake_user|
+    
+    file = URI.open(fake_user[:photo])
+    new_user = User.create(email: fake_user[:email], password: "fakeuser")
+    new_user.avatar.attach(io: file, filename: "user_avatar.png", content_type: 'image/png')
+    # new_user.save
+    # binding.pry
+    @fake_users_created << new_user
+    # binding.pry
+  end
+      # binding.pry
+    puts @fake_users_created
+    seed_equipment_enhanced(@fake_users_created)
+end
+
+# User.all #=> [#<User id: 55, email: "kent.sosa@gmail.com", created_at: "2021-03-12 23:40:00", updated_at: "2021-03-12 23:40:00">, ...]
+# ---------------------------------------------
+
+
 
 
 
@@ -132,7 +215,7 @@ def seed_categories_enhanced
     category = category.children.text.strip.squeeze(" ")
     
     # category.gsub!("  ".)
-    Category.create(name:category.squeeze(" "))
+    Category.create(name:category.squeeze(" ")) if category.ascii_only?
   end
   
   puts 'Categories generated!'
@@ -140,7 +223,15 @@ def seed_categories_enhanced
   puts Category.all
 end
 
-seed_categories_enhanced
+# seed_categories_enhanced
+
+
+
+
+
+
+
+
 
 
 
@@ -224,60 +315,8 @@ end
 
 
 
-def seed_equipment_enhanced
-  puts 'Cleaning database...'
-  puts "__________________"
-  Equipment.destroy_all
-  # User.destroy_all
-  
-  
-  
-  # e = Equipment.create(
-  #   name: "Kites FUELs 11m. et 9m. 2018",
-  #   description: random_description,
-  #   user_id: user1.id,
-  #   category: Category.order(Arel.sql('RANDOM()')).first,
-  #   price_per_day: 30,
-  #   location: "Montreal, Qc"
-  # )
-  
-  
-  # e.photos.attach( io: URI.open("https://picsum.photos/200/300"), filename: "thumnail.png",  content_type: 'image/png')
-  # e.save
-  
-  User.all.each do |user|
-    
-    3.times do |e|
-      prng = Random.new
-      random_title = Faker::Lorem.sentence
-      random_description = Faker::Lorem.paragraph(sentence_count: prng.rand(2..4))
-      random_price_per_day = prng.rand(6..40)
-      random_category = Category.order(Arel.sql('RANDOM()')).first
 
-      e =  Equipment.create(
-        name: random_title,
-        description: random_description,
-        user_id: user.id,
-        category: random_category,
-        price_per_day: random_price_per_day,
-        location: "Montreal, Qc"
-      )
-      e.photos.attach( io: URI.open("https://picsum.photos/600/400?#{random_category.name}"), filename: "thumnail.png",  content_type: 'image/png')
-      e.save if e.valid?
-      
-      puts "#{e.name} created"
-      
-    end
-  end
-  puts "Equipment Generated!"
-end
-# seed_categories
 
 # seed_categories_enhanced
-# seed_equipment
-
-
-
-# seed_users
-# seed_categories
-seed_equipment_enhanced
+seed_users 
+# seed_equipment_enhanced
