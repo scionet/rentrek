@@ -10,7 +10,7 @@
           <div class="card-img-top">
             <% if equipment.photos.attached? %>
               <div class="p-0 border-right"
-                style="width: 100%; height: 130px;
+                style="width: 100%; height: 230px;
                 background-image: url(
                   <%= cl_image_path(equipment.photos.first.key,
                   :transformation => {:effect => "blur:1000"}) %>);
@@ -24,7 +24,7 @@
             <div class="d-flex justify-content-between">
               <h5 class="card-title"><%= equipment.name %></h5>
             </div>
-            <p class="card-text"><%= equipment.description %></p>
+            <p class="card-text"><%= equipment.description.truncate(130) %></p>
             <%# <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> %>
             <div class="d-flex justify-content-between align-items-center">
               <%= link_to "View more", equipment_path(equipment), 
