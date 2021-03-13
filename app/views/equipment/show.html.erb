@@ -34,7 +34,7 @@
         Owner: <%= @equipment.user.email %>
       </p>
       <% if current_user != @equipment.user %>
-        <%= link_to "Check Availibility", new_equipment_reservation_path(@equipment), class: "btn btn-primary btn-block" %>
+      <%= link_to "Request to Rent", new_equipment_reservation_path(@equipment), class: "btn btn-primary btn-block" %>
       <% end %>
     </div>
   </div>
