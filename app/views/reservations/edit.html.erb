@@ -8,7 +8,7 @@
     </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <p class="price-per-day-color">Price/day: $<%= @reservation.equipment.price_per_day %></p>
+          <p class="price-per-day-color">Price/day: <%= number_to_currency(@reservation.equipment.price_per_day) %></p>
           <p class="owner-color">Owner: <%= @reservation.equipment.user.email %></p>
         </li>
         <li class="list-group-item">
@@ -26,9 +26,6 @@
           <%= f.input :end_date, as: :date, html5: true%>
           <%= f.button :submit %>
           <% end %>
-      </div>
-      <div class="card-body text-center">
-       <a href="#" class="card-link">Cancel Reservation</a>
       </div>
     </div>
   </div>

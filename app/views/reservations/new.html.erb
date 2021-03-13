@@ -6,9 +6,16 @@
     <div class="row">
       <div class="col">
         <h2><%= @equipment.name %></h2>
-        <h4 class="price-per-day-color">Price/day: $<%= @equipment.price_per_day %></h4>
+        <h4 class="price-per-day-color">Price/day: <%= number_to_currency(@equipment.price_per_day) %></h4>
         <p class="owner-color">
-        Owner: <%= @equipment.user.email %>
+        <% if @equipment.user.avatar.attached? %>
+          <%= cl_image_tag @equipment.user.avatar.key, height: '60px', width: '60px', style: "object-fit: cover", class: "rounded-circle"  %>
+        <% else %>
+        <div class="border-3 rounded-circle d-flex" width="40" height="40">
+          <i class="bi bi-person-bounding-box"></i>
+        </div>
+        <% end %>
+          Owner: <%= @equipment.user.email %>
         </p>
         <%= @equipment.description.first(100) %>
       </div>
