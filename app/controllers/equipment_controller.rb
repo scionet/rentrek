@@ -12,7 +12,6 @@ class EquipmentController < ApplicationController
     end
     if params[:query].present?
       @equipment = Equipment.search_by_equipment_name(params[:query])
-      @category = Category.search_by_category(params[:query])
     else
       @equipment
     end
