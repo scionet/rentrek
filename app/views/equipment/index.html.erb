@@ -31,7 +31,8 @@
               type: "button", 
                 class: 'btn btn-sm btn-outline-secondary stretched-link' 
               %>
-              <small class="text-muted">$<%= equipment.price_per_day %>/day</small>
+
+              <small class="text-muted"><%= number_to_currency(equipment.price_per_day) %>/day</small>
             </div>
           </div>
         </div>
